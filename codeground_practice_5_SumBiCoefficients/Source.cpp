@@ -42,38 +42,23 @@ int main(int argc, char** argv)
 		int N, M;
 		scanf("%d", &N);
 		scanf("%d", &M);
-		Answer = 0;
-		for (int i = 0; i < N+1; i++)
+		Answer = 1;
+		//(M+N+2)Choose(N+1) - 1
+		//int ohoh=1;
+		for (int i = N+1; i < M + N + 2; i++)
 		{
-			int sum = 1;
-			for (int k = i+1; k < i + M + 1; k++)
-			{
-				sum = sum*(k + 1) % 1000000007/(k-i);
-				//sum /= (k - i);
-				
-			}
-			/*for (int k = 0; k < M; k++)
-			{
-				sum /= (k + 1);
-			}*/
-			/*for (int k = 0; k < i + 1; k++)
-			{
-				sum /= (k + 1);
-			}*/
-			//for (int j = 0; j < M+1; j++)
-			//{
-			//	int sum = 1;
-
-			//	//(i+j)Ci
-			//	//(i+j)!/i!/j!(0<=j<=i)
-			//	for (int k = j; k < i + j; k++)
-			//	{
-			//		sum *= (k + 1)% 1000000007;
-			//		sum /= (k - j + 1);
-			//	}
-				Answer += sum;
-			//}
+			Answer = Answer *(i + 1)/(i-N);
 		}
+		Answer--;
+		/*for (int i = 0; i < N+1; i++)
+		{
+			ohoh /= i + 1;
+		}*/
+		/*for (int i = 0; i < M + 1; i++)
+		{
+
+			ohoh /= i + 1;
+		}*/
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		/*
