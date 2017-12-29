@@ -10,13 +10,13 @@ Please be very careful.
 */
 
 #include <iostream>
-#include <vector>
+//#include <vector>
 #include <stdio.h>
-#include <algorithm>
-#include <math.h>
+//#include <algorithm>
+//#include <math.h>
 using namespace std;
 
-int Answer;
+unsigned int Answer;
 
 int main(int argc, char** argv)
 {
@@ -35,14 +35,30 @@ int main(int argc, char** argv)
 
 	//freopen("input.txt", "r", stdin);
 	setbuf(stdout, NULL);
-	cin >> T;
+	//cin >> T;
+	scanf("%d", &T);
 	for (test_case = 0; test_case < T; test_case++)
 	{
 		int N, M;
 		scanf("%d", &N);
 		scanf("%d", &M);
 		Answer = 0;
+		for (int i = 0; i < N+1; i++)
+		{
+			for (int j = 0; j < M+1; j++)
+			{
+				int sum = 1;
 
+				//(i+j)Ci
+				//(i+j)!/i!/j!(0<=j<=i)
+				for (int k = j; k < i + j; k++)
+				{
+					sum *= (k + 1)% 1000000007;
+					sum /= (k - j + 1);
+				}
+				Answer += sum;
+			}
+		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		/*
@@ -52,8 +68,10 @@ int main(int argc, char** argv)
 		/////////////////////////////////////////////////////////////////////////////////////////////
 
 		// Print the answer to standard output(screen).
-		cout << "Case #" << test_case + 1 << endl;
-		cout << Answer << endl;
+		/*cout << "Case #" << test_case + 1 << endl;
+		cout << Answer% 1000000007<< endl;*/
+		printf("Case #%d\n", test_case + 1);
+		printf("%d\n", Answer % 1000000007);
 	}
 
 	return 0;//Your program should return 0 on normal termination.
