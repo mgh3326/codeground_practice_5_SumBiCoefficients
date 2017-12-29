@@ -45,19 +45,34 @@ int main(int argc, char** argv)
 		Answer = 0;
 		for (int i = 0; i < N+1; i++)
 		{
-			for (int j = 0; j < M+1; j++)
+			int sum = 1;
+			for (int k = i+1; k < i + M + 1; k++)
 			{
-				int sum = 1;
-
-				//(i+j)Ci
-				//(i+j)!/i!/j!(0<=j<=i)
-				for (int k = j; k < i + j; k++)
-				{
-					sum *= (k + 1)% 1000000007;
-					sum /= (k - j + 1);
-				}
-				Answer += sum;
+				sum = sum*(k + 1) % 1000000007/(k-i);
+				//sum /= (k - i);
+				
 			}
+			/*for (int k = 0; k < M; k++)
+			{
+				sum /= (k + 1);
+			}*/
+			/*for (int k = 0; k < i + 1; k++)
+			{
+				sum /= (k + 1);
+			}*/
+			//for (int j = 0; j < M+1; j++)
+			//{
+			//	int sum = 1;
+
+			//	//(i+j)Ci
+			//	//(i+j)!/i!/j!(0<=j<=i)
+			//	for (int k = j; k < i + j; k++)
+			//	{
+			//		sum *= (k + 1)% 1000000007;
+			//		sum /= (k - j + 1);
+			//	}
+				Answer += sum;
+			//}
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
